@@ -29,3 +29,4 @@ DockerPush:
 
 BuildInfo:
   autoPublishBuildInfo: true
+  name: fooBuildInfo
