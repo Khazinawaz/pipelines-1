@@ -10,6 +10,8 @@ artifactoryIntegration: art
 Image:
   name: fooImage
   sourceRepository: foo
+  dockerImageName: foo
+  autoPull: false
 
 DockerBuild:
   name: foobuild
