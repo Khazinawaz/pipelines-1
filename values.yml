@@ -27,6 +27,6 @@ DockerPush:
   name: fooDockerPush
   targetRepository: bharath92
 
-# BuildInfo:
-#   autoPublishBuildInfo: true
-#   name: fooBuildInfo
+BuildInfo:
+  autoPublishBuildInfo: true
+  name: fooBuildInfo
