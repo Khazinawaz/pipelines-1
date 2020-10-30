@@ -14,17 +14,15 @@ Image:
   autoPull: false
 
 DockerBuild:
-  name: foobuild
-  dockerImageName: foo
-  dockerFileName: foo
+  name: fooDockerBuild
+  dockerImageName: bharath92/alpine
+  dockerFileName: Dockerfile
   dockerFileLocation: '.'
   dockerImageTag: ${run_number}
 
 Pipeline:
-  name: foo
+  name: fooPipeline
 
 DockerPush:
-  name: foopush
-  dockerImageName: foo
-  dockerFileName: foo
-  targetRepository: foo
+  name: fooDockerPush
+  targetRepository: bharath92
