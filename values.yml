@@ -26,3 +26,6 @@ Pipeline:
 DockerPush:
   name: fooDockerPush
   targetRepository: bharath92
+
+BuildInfo:
+  autoPublishBuildInfo: true
