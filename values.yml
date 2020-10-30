@@ -20,8 +20,8 @@ DockerBuild:
   dockerFileLocation: '.'
   dockerImageTag: ${run_number}
 
-Pipeline:
-  name: fooPipeline
+#Pipeline:
+#  name: fooPipeline
 
 DockerPush:
   name: fooDockerPush
