@@ -2,8 +2,8 @@ GitRepo:
   name: fooGitRepo
   gitProvider: github
   path: bharath92/sample-runsh
-#   branches:
-#     include: 'master'
+  branches:
+    include: 'master'
 
 artifactoryIntegration: art
   
