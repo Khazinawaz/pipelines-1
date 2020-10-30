@@ -2,8 +2,8 @@ GitRepo:
   name: fooGitRepo
   gitProvider: github
   path: bharath92/sample-runsh
-#   branches:
-#     include: 'master'
+  branches:
+    include: 'master'
 
 artifactoryIntegration: art
   
@@ -20,13 +20,13 @@ DockerBuild:
   dockerFileLocation: '.'
   dockerImageTag: ${run_number}
 
-#Pipeline:
-#  name: fooPipeline
+Pipeline:
+ name: fooPipeline
 
 DockerPush:
   name: fooDockerPush
   targetRepository: bharath92
 
-# BuildInfo:
-#   autoPublishBuildInfo: true
-#   name: fooBuildInfo
+BuildInfo:
+  autoPublishBuildInfo: true
+  name: fooBuildInfo
