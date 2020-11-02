@@ -4,7 +4,7 @@ GitRepo:
   path: bharath92/pipelines
   branches:
     exclude: 'master'
-    include: '{{gitBranch}}'
+    include: {{gitBranch}}
 
 artifactoryIntegration: art
   
