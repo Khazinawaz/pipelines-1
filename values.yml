@@ -1,7 +1,7 @@
 GitRepo:
   name: fooGitRepo
   gitProvider: github
-  path: bharath92/sample-runsh
+  path: bharath92/pipelines
   branches:
     include: 'master'
     exclude: {{gitBranch}}
