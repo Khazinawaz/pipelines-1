@@ -19,7 +19,7 @@ pipelines:
            - name: git
         execution:
           onExecute:
-            - printenv
+            - printenv {{gitBranch}}
             - echo {{gitBranch}}
       - name: second
         type: Bash
