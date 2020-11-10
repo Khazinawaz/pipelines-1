@@ -1,28 +1,28 @@
-GitRepo:
-  name: fooGitRepo
-  gitProvider: github
-  path: bharath92/sample-runsh
-  branches:
-    include: 'master'
+# GitRepo:
+#   name: fooGitRepo
+#   gitProvider: github
+#   path: bharath92/sample-runsh
+#   branches:
+#     include: 'master'
 
-artifactoryIntegration: art
+# artifactoryIntegration: art
   
-Image:
-  name: fooImage
-  sourceRepository: foo
+# Image:
+#   name: fooImage
+#   sourceRepository: foo
 
-DockerBuild:
-  name: foobuild
-  dockerImageName: foo
-  dockerFileName: foo
-  dockerFileLocation: '.'
-  dockerImageTag: ${run_number}
+# DockerBuild:
+#   name: foobuild
+#   dockerImageName: foo
+#   dockerFileName: foo
+#   dockerFileLocation: '.'
+#   dockerImageTag: ${run_number}
 
-Pipeline:
-  name: foo
+# Pipeline:
+#   name: foo
 
-DockerPush:
-  name: foopush
-  dockerImageName: foo
-  dockerFileName: foo
-  targetRepository: foo
+# DockerPush:
+#   name: foopush
+#   dockerImageName: foo
+#   dockerFileName: foo
+#   targetRepository: foo
