@@ -1,259 +1,259 @@
-resources: 
-  - name: aql
-    type: Aql
-    configuration:
-      sourceArtifactory: kermit_art
-      query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"mvn_example_build"}},{"artifact.module.build.number":{"$eq":"11"}}]})'     
-  - name: image
-    type: Image
-    configuration:
-      imageName: imageRepo/imageName
-      registry: bharath_github
-      autoPull: true
-      imageTag: lol
-  - name: dockerbuild_gitRepo
-    type: GitRepo
-    configuration:
-      path: bharath92/gitIssues
-      gitProvider: bharath_github
-#  - name: buildInfo
-#    type: buildInfo
-#    version:
-#      buildName: app
-#      buildNumber: 1
-  - name: distributionRule
-    type: DistributionRule
-    configuration:
-      sourceArtifactory: kermit_art
-      cityName: "*"
-      serviceName: "*"
-      siteName: "*"
-      countryCodes:
-        - "CN"
-  - name: distributionRule2
-    type: DistributionRule
-    configuration:
-      sourceArtifactory: kermit_art
-      cityName: "*"
-      serviceName: "*"
-      siteName: "*"
-      countryCodes:
-        - "US"
-  - name: releaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceArtifactory: art
-      name: test_2
-      version: v1.1.3
-#  - name: releaseBundle
-#    type: releaseBundle
-#    version:
-#      name: test_release
-#      version: v1.0.0
-#      isSigned: true
-  - name: releaseBundle2
-    type: ReleaseBundle
-    configuration:
-      sourceArtifactory: kermit_art
-      name: ankul_test_release
-      version: v1.0.0
-      isSigned: true
-#  - name: distributionRule2
-#    type: DistributionRule
-#    version:
-#      cityName: "Beng"
-#      serviceName: "lol"
-#      siteName: "test"
-#      countryCodes:
-#        countryCodeCount: 3
-#        countryCode01: "test"
-#        countryCode02: "lol"
-#        countryCode03: "bol"
-#    
+# resources: 
+#   - name: aql
+#     type: Aql
+#     configuration:
+#       sourceArtifactory: kermit_art
+#       query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"mvn_example_build"}},{"artifact.module.build.number":{"$eq":"11"}}]})'     
+#   - name: image
+#     type: Image
+#     configuration:
+#       imageName: imageRepo/imageName
+#       registry: bharath_github
+#       autoPull: true
+#       imageTag: lol
+#   - name: dockerbuild_gitRepo
+#     type: GitRepo
+#     configuration:
+#       path: bharath92/gitIssues
+#       gitProvider: bharath_github
+# #  - name: buildInfo
+# #    type: buildInfo
+# #    version:
+# #      buildName: app
+# #      buildNumber: 1
+#   - name: distributionRule
+#     type: DistributionRule
+#     configuration:
+#       sourceArtifactory: kermit_art
+#       cityName: "*"
+#       serviceName: "*"
+#       siteName: "*"
+#       countryCodes:
+#         - "CN"
+#   - name: distributionRule2
+#     type: DistributionRule
+#     configuration:
+#       sourceArtifactory: kermit_art
+#       cityName: "*"
+#       serviceName: "*"
+#       siteName: "*"
+#       countryCodes:
+#         - "US"
+#   - name: releaseBundle
+#     type: ReleaseBundle
+#     configuration:
+#       sourceArtifactory: art
+#       name: test_2
+#       version: v1.1.3
+# #  - name: releaseBundle
+# #    type: releaseBundle
+# #    version:
+# #      name: test_release
+# #      version: v1.0.0
+# #      isSigned: true
+#   - name: releaseBundle2
+#     type: ReleaseBundle
+#     configuration:
+#       sourceArtifactory: kermit_art
+#       name: ankul_test_release
+#       version: v1.0.0
+#       isSigned: true
+# #  - name: distributionRule2
+# #    type: DistributionRule
+# #    version:
+# #      cityName: "Beng"
+# #      serviceName: "lol"
+# #      siteName: "test"
+# #      countryCodes:
+# #        countryCodeCount: 3
+# #        countryCode01: "test"
+# #        countryCode02: "lol"
+# #        countryCode03: "bol"
+# #    
 
-  - name: buildinfo1
-    type: BuildInfo
-    configuration:
-      buildNumber: 12
-      buildName: go_publish_example
-      sourceArtifactory: art
+#   - name: buildinfo1
+#     type: BuildInfo
+#     configuration:
+#       buildNumber: 12
+#       buildName: go_publish_example
+#       sourceArtifactory: art
 
-  - name: buildinfo2
-    type: BuildInfo
-    configuration:
-      buildNumber: 11
-      buildName: mvn_example_build
-      sourceArtifactory: art
-  - name: project_example
-    type: GitRepo
-    configuration:
-      gitProvider: bharath_github
-      path: Bharath92/project-examples
-pipelines:
-  - name: app
-    steps:
-#      - name: bash
-#        type: Bash
-#        configuration:
-#          environmentVariables:
-#            foo: bar
-#          timeoutSeconds: 2
-#          nodePool: dev
-#          #inputSteps:
-#          #  - name: step
-#          integrations:
-#            - name: art
-#          outputResources:
-#            - name: aql
-#          inputResources:
-#            - name: dockerbuild_gitRepo
-#              trigger: false
-#            - name: image
-#              
-#              
-#       
-#        execution:
-#          onExecute:
-#            - printenv
-#      - name: build_image
-#        type: build
-#        payloadType: docker
-#        setup:
-#          build:
-#            dockerFileLocation: .
-#            dockerFileName: Dockerfile
-#            imageName: mill.jfrog.info:12052/docker/bharath-gitissues
-#            imageTag: $PIPELINE_NAME.$RUN_NUMBER
-#        requires:
-#          integrations:
-#            - art
-#          resources:
-#            - dockerbuild_gitRepo
-#            
-#      - name: push_image
-#        type: push
-#        setup:
-#          push:
-#            targetRepo: docker
-#            publish: false
-#            scan: false
-#        requires:
-#          integrations:
-#            - art
-#        triggeredBy:
-#          steps:
-#            - build_image
-#            
-#      - name: publish_build
-#        type: publish
-#        setup:
-#          publish:
-#            scan: false
-#        requires:
-#          integrations:
-#            - art
-#        triggeredBy:
-#          steps:
-#            - push_image
-#        outputResources:
-#          - buildInfo
-#       - name: scan
-#         type: XrayScan
+#   - name: buildinfo2
+#     type: BuildInfo
+#     configuration:
+#       buildNumber: 11
+#       buildName: mvn_example_build
+#       sourceArtifactory: art
+#   - name: project_example
+#     type: GitRepo
+#     configuration:
+#       gitProvider: bharath_github
+#       path: Bharath92/project-examples
+# pipelines:
+#   - name: app
+#     steps:
+# #      - name: bash
+# #        type: Bash
+# #        configuration:
+# #          environmentVariables:
+# #            foo: bar
+# #          timeoutSeconds: 2
+# #          nodePool: dev
+# #          #inputSteps:
+# #          #  - name: step
+# #          integrations:
+# #            - name: art
+# #          outputResources:
+# #            - name: aql
+# #          inputResources:
+# #            - name: dockerbuild_gitRepo
+# #              trigger: false
+# #            - name: image
+# #              
+# #              
+# #       
+# #        execution:
+# #          onExecute:
+# #            - printenv
+# #      - name: build_image
+# #        type: build
+# #        payloadType: docker
+# #        setup:
+# #          build:
+# #            dockerFileLocation: .
+# #            dockerFileName: Dockerfile
+# #            imageName: mill.jfrog.info:12052/docker/bharath-gitissues
+# #            imageTag: $PIPELINE_NAME.$RUN_NUMBER
+# #        requires:
+# #          integrations:
+# #            - art
+# #          resources:
+# #            - dockerbuild_gitRepo
+# #            
+# #      - name: push_image
+# #        type: push
+# #        setup:
+# #          push:
+# #            targetRepo: docker
+# #            publish: false
+# #            scan: false
+# #        requires:
+# #          integrations:
+# #            - art
+# #        triggeredBy:
+# #          steps:
+# #            - build_image
+# #            
+# #      - name: publish_build
+# #        type: publish
+# #        setup:
+# #          publish:
+# #            scan: false
+# #        requires:
+# #          integrations:
+# #            - art
+# #        triggeredBy:
+# #          steps:
+# #            - push_image
+# #        outputResources:
+# #          - buildInfo
+# #       - name: scan
+# #         type: XrayScan
+# #         configuration:
+# #           buildName: ankul_pipeline
+# #           buildNumber: 1
+# #           integrations:
+# #             - name: kermit_art
+# #           inputSteps:
+# #             - name: sign
+# #       - name: sign
+# #         type: SignReleaseBundle
+# #         configuration:
+# #           inputResources:
+# #             - name: releaseBundle
+# #           integrations:
+# #             - name: kermit_art
+# #           outputResources:
+# #             - name: releaseBundle2
+# #       - name: distribute
+# #         type: DistributeReleaseBundle
+# #         configuration:
+# #           dryRun: true
+# #           inputResources:
+# #             #- name: distributionRule
+# #             - name: distributionRule2
+# #             - name: releaseBundle2
+# #       - name: bundle
+# #         type: CreateReleaseBundle
+# #         configuration:
+# #           affinityGroup: test
+# #           releaseBundleName: kermit_test_aql
+# #           releaseBundleVersion: v1.1.0
+# #           dryRun: false
+# #           sign: false
+# #           description: "some random test description"
+# #           integrations:
+# #             - name: kermit_art
+# #           inputResources:
+# #             - name: aql
+# #           outputResources:
+# #             - name: releaseBundle
+# #           releaseNotes:
+# #             syntax: markdown
+# #             content: |
+# #               ## Heading
+# #                 * Bullet
+# #                 * Points
+# #        requires:
+# #          integrations:
+# #            - kermit_art
+# #          steps:
+# #            - bash
+# #          resources:
+# #            - distributionRule
+# #            - releaseBundle
+# #   
+# #  - name: scan_pipelinne
+# #    steps:
+# #      - name: scan_build
+# #        type: scan
+# #        setup:
+# #          scan:
+# #            buildName: $BUILD_NAME
+# #            buildNumber: $BUILD_NUMBER
+# #        requires:
+# #          integrations:
+# #            - art
+# #        triggeredBy:
+# #          resources:
+# #            - buildInfo
+
+#       - name: build_mvn
+#         type: MvnBuild
 #         configuration:
-#           buildName: ankul_pipeline
-#           buildNumber: 1
-#           integrations:
-#             - name: kermit_art
-#           inputSteps:
-#             - name: sign
-#       - name: sign
-#         type: SignReleaseBundle
-#         configuration:
+#           sourceLocation: ./artifactory-maven-plugin-example
+#           mvnCommand: clean install -f ./pom.xml
+#           configFileLocation: .
+#           configFileName: mvn-art-config
+#           autoPublishBuildInfo: true
+#           forceXrayScan: true
 #           inputResources:
-#             - name: releaseBundle
+#             - name: project_example
 #           integrations:
 #             - name: kermit_art
 #           outputResources:
-#             - name: releaseBundle2
-#       - name: distribute
-#         type: DistributeReleaseBundle
-#         configuration:
-#           dryRun: true
-#           inputResources:
-#             #- name: distributionRule
-#             - name: distributionRule2
-#             - name: releaseBundle2
-#       - name: bundle
-#         type: CreateReleaseBundle
-#         configuration:
-#           affinityGroup: test
-#           releaseBundleName: kermit_test_aql
-#           releaseBundleVersion: v1.1.0
-#           dryRun: false
-#           sign: false
-#           description: "some random test description"
-#           integrations:
-#             - name: kermit_art
-#           inputResources:
-#             - name: aql
-#           outputResources:
-#             - name: releaseBundle
-#           releaseNotes:
-#             syntax: markdown
-#             content: |
-#               ## Heading
-#                 * Bullet
-#                 * Points
-#        requires:
-#          integrations:
-#            - kermit_art
-#          steps:
-#            - bash
-#          resources:
-#            - distributionRule
-#            - releaseBundle
-#   
-#  - name: scan_pipelinne
-#    steps:
-#      - name: scan_build
-#        type: scan
-#        setup:
-#          scan:
-#            buildName: $BUILD_NAME
-#            buildNumber: $BUILD_NUMBER
-#        requires:
-#          integrations:
-#            - art
-#        triggeredBy:
-#          resources:
-#            - buildInfo
-
-      - name: build_mvn
-        type: MvnBuild
-        configuration:
-          sourceLocation: ./artifactory-maven-plugin-example
-          mvnCommand: clean install -f ./pom.xml
-          configFileLocation: .
-          configFileName: mvn-art-config
-          autoPublishBuildInfo: true
-          forceXrayScan: true
-          inputResources:
-            - name: project_example
-          integrations:
-            - name: kermit_art
-          outputResources:
-            - name: buildinfo1
-        execution:
-          onStart:
-            - apt-get update
-            - apt install default-jdk
-            - pushd /tmp
-            - wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
-            - tar xzvf apache-maven-3.6.1-bin.tar.gz
-            - export PATH=$PATH:/tmp/apache-maven-3.6.1/bin
-            - export M2_HOME=/tmp/apache-maven-3.6.1/
-            - popd
-            - javac -version
-            - mvn --version
+#             - name: buildinfo1
+#         execution:
+#           onStart:
+#             - apt-get update
+#             - apt install default-jdk
+#             - pushd /tmp
+#             - wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
+#             - tar xzvf apache-maven-3.6.1-bin.tar.gz
+#             - export PATH=$PATH:/tmp/apache-maven-3.6.1/bin
+#             - export M2_HOME=/tmp/apache-maven-3.6.1/
+#             - popd
+#             - javac -version
+#             - mvn --version
 
 
