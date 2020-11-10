@@ -1,4 +1,4 @@
-pipelines:
+  pipelines:
   - name: pipeline_automation
     steps:
       - name: S_Bash_0032
