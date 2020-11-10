@@ -1,3 +1,6 @@
+template: true
+valuesYmlPath: ./values.yml
+
 resources:
   - name: git
     type: GitRepo
