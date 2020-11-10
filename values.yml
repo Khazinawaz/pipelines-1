@@ -1,6 +1,6 @@
 GitRepo:
   name: test_gitrepo
-  gitProvider: github
+  gitProvider: bharath_github
   path: bharath92/sample-runsh
   branches:
     include: 'test_aws'
