@@ -1,5 +1,5 @@
 template: true
-valuesYmlPath: ./values.yml
+valuesFilePath: ./values.yml
 
 resources:
   - name: git
