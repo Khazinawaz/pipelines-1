@@ -13,6 +13,7 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          affinityGroup: basic_group
           runtime:
             type: host
 # #           inputResources:
@@ -21,6 +22,20 @@ pipelines:
 #             foo: bar
 #           runtime:
 #             type: host
+        execution:
+          onExecute:
+            - printenv
+            - sleep 2m
+            - add_pipeline_variables foo=bar
+            - echo loool
+      - name: basic2
+        type: Bash
+        configuration:
+          affinityGroup: basic_group
+          runtime:
+            type: host
+          inputSteps:
+            - name: basic
         execution:
           onExecute:
             - printenv
