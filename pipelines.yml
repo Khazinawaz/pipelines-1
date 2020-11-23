@@ -24,7 +24,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - echo lol
+            - sleep 2m
             - add_pipeline_variables foo=bar
             - echo loool
 #       - name: second
